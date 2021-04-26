@@ -1,0 +1,6 @@
+.vscode/*
+Jupyter_config_dir/*
+container/*
+docker-compose.yml
+.env
+lib/__pycache__/*
