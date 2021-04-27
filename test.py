@@ -1,4 +1,5 @@
 import unittest
+import pysam
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -74,6 +75,67 @@ class TestRemoveAdapters(unittest.TestCase):
         result = hw.remove_adapter(SeqRecord(read), "AGATCGG")
         expected_result = Seq("")
         self.assertEqual(expected_result, result.seq)
+
+class TestCountPointMutations(unittest.TestCase):
+
+    def test_single_read(self):
+        """Tests counting point mutations of a single read."""
+        reads = list(pysam.AlignmentFile("/code/example_files/example1.sam", "r"))
+        read = reads[250]
+        point_mutations = hw.count_point_mutations([read])
+        expected = {'AG': 0,
+                    'AT': 0,
+                    'AC': 0,
+                    'CA': 0,
+                    'CT': 0,
+                    'CG': 0,
+                    'TA': 0,
+                    'TC': 2,
+                    'TG': 0,
+                    'GA': 0,
+                    'GC': 0,
+                    'GT': 0}
+        self.assertEqual(point_mutations, expected)
+
+    def test_single_read_w_deletion(self):
+        """Tests counting point mutations of a single read with deletions."""
+        reads = list(pysam.AlignmentFile("/code/example_files/example1.sam", "r"))
+        read = reads[260]
+        point_mutations = hw.count_point_mutations([read])
+        expected = {'AG': 1,
+                    'AT': 2,
+                    'AC': 1,
+                    'CA': 0,
+                    'CT': 1,
+                    'CG': 0,
+                    'TA': 1,
+                    'TC': 0,
+                    'TG': 1,
+                    'GA': 0,
+                    'GC': 0,
+                    'GT': 0}
+        self.assertEqual(point_mutations, expected)
+
+    def test_multiple_reads(self):
+        """Tests counting point mutations of multiple reads"""
+        reads = list(pysam.AlignmentFile("/code/example_files/example1.sam", "r"))
+        point_mutations = hw.count_point_mutations(reads)
+        expected = {'AG': 256,
+                    'AT': 182,
+                    'AC': 103,
+                    'CA': 56,
+                    'CT': 198,
+                    'CG': 31,
+                    'TA': 166,
+                    'TC': 238,
+                    'TG': 112,
+                    'GA': 151,
+                    'GC': 39,
+                    'GT': 34}
+        self.assertEqual(point_mutations, expected)
+
+
+
 
 if __name__ == "__main__":
     res = unittest.main(verbosity=3, exit=False)
