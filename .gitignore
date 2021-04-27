@@ -1,6 +1,4 @@
 .vscode/*
-Jupyter_config_dir/*
-container/*
-docker-compose.yml
-.env
 lib/__pycache__/*
+Jupyter_config_idr/migrated
+.ipynb_checkpoints/*

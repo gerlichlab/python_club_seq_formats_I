@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+    testrunner:
+        container_name: testrunner
+        volumes:  
+            - ${CODE_DIR}:/code
+        build:
+            context: "./container"
+        image: mclass:v1
+        entrypoint: "/bin/bash"
+        command: -c "cd /code && python test.py"
