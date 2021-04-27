@@ -1,5 +1,7 @@
 import unittest
 from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
 import lib.homework as hw
 
 
@@ -45,6 +47,33 @@ class TestGetNucleotideContent(unittest.TestCase):
             for nuc in expected[key]:
                 self.assertAlmostEqual(result[key][nuc], expected[key][nuc])
 
+class TestRemoveAdapters(unittest.TestCase):
+
+    def test_no_adapter_present(self):
+        """Tests that same record is returned if not adapter is present."""
+        with open("./example_files/example2.fq") as f:
+            fasta = list(SeqIO.parse(f, "fastq"))
+        read = fasta[0][:10]
+        result = hw.remove_adapter(read, "AGATCGG")
+        self.assertEqual(read.seq, result.seq)
+
+    def test_adapter_present(self):
+        """Tests that same record is returned if not adapter is present."""
+        with open("./example_files/example2.fq") as f:
+            fasta = list(SeqIO.parse(f, "fastq"))
+        read = fasta[0]
+        result = hw.remove_adapter(read, "AGATCGG")
+        expected_result = Seq("NAGACTTAAAGACAGTTCAATGACTACGGA")
+        self.assertEqual(expected_result, result.seq)
+
+    def test_only_adapter(self):
+        """Tests that same record is returned if not adapter is present."""
+        with open("./example_files/example2.fq") as f:
+            fasta = list(SeqIO.parse(f, "fastq"))
+        read = Seq("AGATCGG")
+        result = hw.remove_adapter(SeqRecord(read), "AGATCGG")
+        expected_result = Seq("")
+        self.assertEqual(expected_result, result.seq)
 
 if __name__ == "__main__":
     res = unittest.main(verbosity=3, exit=False)

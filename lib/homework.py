@@ -6,7 +6,7 @@ def get_nucleotide_content(fastaContent):
     """
     raise NotImplementedError
 
-def remove_adapter(fastaContent, adapter_sequence):
-    """Takes a fasta fileiterator created by Bio.SeqIO.parse(fastafile, "fasta")
+def remove_adapter(fasta_sequence, adapter_sequence):
+    """Takes a fasta sequence (SeqRecord)
     and removes all bases after a perfect match with the adapter_sequence."""
     raise NotImplementedError
