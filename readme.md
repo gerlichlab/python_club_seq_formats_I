@@ -16,7 +16,7 @@ FASTA files are often used in situations where quality information does not make
 
 ## Running code in this problem set
 
-In order work with the material here, you need to install [docker](https://docs.docker.com/get-docker/). You can then start a notebook server with all the necessary libraries installed with `docker-compose up` from the command line in the repo directory. Then just open up a browser and navigate to http://localhost:9999. This will prompt you for a password, which will be disclosed in the lecture. You can then run code and edit files in your browser.
+In order to work with the material here, you need to install [docker](https://docs.docker.com/get-docker/). You can then start a notebook server with all the necessary libraries installed with `docker-compose up` from the command line in the repo directory. Then just open up a browser and navigate to http://localhost:9999. This will prompt you for a password, which will be disclosed in the lecture. You can then run code and edit files in your browser.
 
 Alternatively, you can open any of the notebooks in vscode, open up the command palette and specify a remote notebook, by pasting `http://localhost:9999` as follows:
 
@@ -29,5 +29,6 @@ Alternatively, you can open any of the notebooks in vscode, open up the command 
     ![asdf](pictures/existing.png)
 * Type in `http://localhost:9999` and hit enter.
     ![asdf](pictures/localhost.png)
+* Enter the secret password
 
-If you want to run the tests for the three functions that you need to implement, run the following command form within the repo directory `docker-compose -f run_tests.yml up`.
+If you want to run the tests for the three functions that you need to implement, run the following command form within the repo directory:`docker-compose -f run_tests.yml up`.
