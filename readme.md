@@ -22,12 +22,12 @@ Alternatively, you can open any of the notebooks in vscode, open up the command 
 
 * Open notebook file
 * Hit `ctrl+shift+P` or `magic-apple-button + shift+P` to open the command palette
-    ![asdf](pictures\command_palette.png)
+    ![asdf](pictures/command_palette.png)
 * Type in `Specify local or remote jupyter server` 
-    ![asdf](pictures\specify_local_or_remote.png)
+    ![asdf](pictures/specify_local_or_remote.png)
 * Click on `Existing`
-    ![asdf](pictures\existing.png)
+    ![asdf](pictures/existing.png)
 * Type in `http://localhost:9999` and hit enter.
-    ![asdf](pictures\localhost.png)
+    ![asdf](pictures/localhost.png)
 
 If you want to run the tests for the three functions that you need to implement, run the following command form within the repo directory `docker-compose -f run_tests.yml up`.
