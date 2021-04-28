@@ -14,4 +14,4 @@ services:
             context: "./container"
         image: mclass:v1
         entrypoint: "/bin/bash"
-        command: -c "sleep 10 &&jupyter notebook --ip=0.0.0.0 --no-browser --port 9999 --allow-root"
+        command: -c "jupyter notebook --ip=0.0.0.0 --no-browser --port 9999 --allow-root"
