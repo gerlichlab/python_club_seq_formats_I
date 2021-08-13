@@ -1,4 +1,4 @@
 .vscode/*
 lib/__pycache__/*
 Jupyter_config_idr/migrated
-.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*
